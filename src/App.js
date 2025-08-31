@@ -4,6 +4,8 @@ import Home from './components/Home';
 import About from './components/About';
 import Products from './components/Products';
 import ProductDetail from './components/ProductDetail';
+import Users from './components/Users';
+import UserDetail from './components/UserDetail';
 import './App.css';
 
 function App() {
@@ -21,17 +23,27 @@ function App() {
             <li>
               <Link to="/products">Products</Link>
             </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
           </ul>
         </nav>
 
         {/* Defines where the routed components will render */}
        <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/about" element={<About />} />
-          {/* Nested route structure for Products */}
+
+
           <Route path="/products" element={<Products />}>
-            {/* This route will match /products/1, /products/2, etc. */}
             <Route path=":productId" element={<ProductDetail />} />
+          </Route>
+
+
+          <Route path="/users" element={<Users />}>
+            <Route path=":userId" element={<UserDetail />} />
+            
           </Route>
         </Routes>
       </div>
